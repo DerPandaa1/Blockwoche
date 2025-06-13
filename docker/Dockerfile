@@ -5,8 +5,4 @@ WORKDIR /app
 COPY ./hsqldb.jar /app/hsqldb.jar
 EXPOSE 5000
 
-# Setup an app user so the container doesn't run as the root user
-RUN useradd app
-USER app
-
 CMD ["java", "-classpath", "/app/hsqldb.jar", "org.hsqldb.server.Server"]
