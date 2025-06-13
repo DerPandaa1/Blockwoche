@@ -15,7 +15,7 @@
           buildInputs = [
             pkgs.python313Packages.python
             pkgs.python313Packages.pip
-            pkgs.python313Packages.poetry-core
+            pkgs.poetry
             pkgs.bashInteractive
           ];
         };
