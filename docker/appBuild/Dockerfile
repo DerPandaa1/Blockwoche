@@ -4,4 +4,4 @@ WORKDIR /app
 # Copy in the source code
 COPY ./* /app/
 
-CMD ["java", "-classpath", "/app/hsqldb.jar", "org.hsqldb.server.Server"]
+CMD ["java", "-jar", "/app/benchmark.jar", "-h","db","-u","DBADMIN","-w","UG6bF9TDNEnyK3aagMmV","-o","/output"]

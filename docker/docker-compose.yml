@@ -3,4 +3,16 @@ services:
     image: hsqldb
     ports:
       - 9001:9001
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "9001"]
+      interval: 30s
+      timeout: 5s
+      retries: 3   
     cpuset: "1"
+  benchmark:
+    image: testdb
+    volumes:
+      - ./output:/output
+    depends_on:
+      db:
+        condition: service_healthy
