@@ -1,0 +1,7 @@
+services:
+  db:
+    image: hsqldb
+    ports:
+      - 9001:9001
+    limits:
+      cpus: '1.0'
