@@ -8,13 +8,13 @@ import java.sql.Statement;
 public class DBBenchmarkConnection implements AutoCloseable {
     private final Connection connection;
 
-    public DBBenchmarkConnection(String host, int port) {
+    public DBBenchmarkConnection(String host, int port, String user, String password) {
         try {
             String jdbcUrl = port == 0
                     ? "jdbc:hsqldb:mem:testdb"
                     : "jdbc:hsqldb:hsql://" + host + ":" + port + "/";
 
-            this.connection = DriverManager.getConnection(jdbcUrl, "SA", "");
+            this.connection = DriverManager.getConnection(jdbcUrl, user, password);
         } catch (SQLException e) {
             throw new RuntimeException("Failed to connect to HSQLDB", e);
         }
