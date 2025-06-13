@@ -3,7 +3,4 @@ services:
     image: hsqldb
     ports:
       - 9001:9001
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
+    cpuset: "1"
