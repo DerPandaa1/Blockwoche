@@ -26,7 +26,7 @@ public class BatchQueryBenchmark extends Benchmark {
 
             timeCreate = System.nanoTime();
 
-            for(var cmd: commands.get(CrudType.CREATE)) {
+            for (var cmd : commands.get(CrudType.CREATE)) {
                 connection.execute(cmd);
             }
 
@@ -34,7 +34,7 @@ public class BatchQueryBenchmark extends Benchmark {
 
             timeRead = System.nanoTime();
 
-            for(var cmd: commands.get(CrudType.READ)) {
+            for (var cmd : commands.get(CrudType.READ)) {
                 connection.execute(cmd);
             }
 
@@ -42,7 +42,7 @@ public class BatchQueryBenchmark extends Benchmark {
 
             timeUpdate = System.nanoTime();
 
-            for(var cmd: commands.get(CrudType.UPDATE)) {
+            for (var cmd : commands.get(CrudType.UPDATE)) {
                 connection.execute(cmd);
             }
 
@@ -50,7 +50,7 @@ public class BatchQueryBenchmark extends Benchmark {
 
             timeDelete = System.nanoTime();
 
-            for(var cmd: commands.get(CrudType.DELETE)) {
+            for (var cmd : commands.get(CrudType.DELETE)) {
                 connection.execute(cmd);
             }
 

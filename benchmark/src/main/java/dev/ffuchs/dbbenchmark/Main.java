@@ -3,8 +3,8 @@ package dev.ffuchs.dbbenchmark;
 import dev.ffuchs.dbbenchmark.api.DBBenchmarkConnection;
 import dev.ffuchs.dbbenchmark.api.Logger;
 import picocli.CommandLine;
-import picocli.CommandLine.Option;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -23,7 +23,7 @@ public class Main implements Runnable {
     @Option(names = {"-w", "--password"}, description = "The password of the database server", defaultValue = "")
     private String password;
 
-    @Option(names = {"-o" , "--output"}, description = "The output folder for the benchmark results", defaultValue = "./benchmark_results")
+    @Option(names = {"-o", "--output"}, description = "The output folder for the benchmark results", defaultValue = "./benchmark_results")
     private String outputFolder;
 
     public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class Main implements Runnable {
     @Override
     public void run() {
         Logger.setup();
-        if(!Files.isDirectory(new File(outputFolder).toPath())) {
+        if (!Files.isDirectory(new File(outputFolder).toPath())) {
             System.err.println("Output folder does not exist: " + outputFolder);
             return;
         }

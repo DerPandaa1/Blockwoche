@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class FakeData {
-    private FakeData() {}
+    private FakeData() {
+    }
 
     public static String randomString(int length) {
         StringBuilder sb = new StringBuilder(length);
@@ -23,7 +24,7 @@ public class FakeData {
         return uuids;
     }
 
-    public static HashMap<CrudType, String[]> generateSQLCommands(int amount, String table){
+    public static HashMap<CrudType, String[]> generateSQLCommands(int amount, String table) {
         HashMap<CrudType, String[]> commands = new HashMap<>();
 
         String[] insertCommands = new String[amount];
@@ -48,7 +49,7 @@ public class FakeData {
     }
 
     public static HashMap<CrudType, String[]> generateBatchedSQLCommands(int amount, String table, int batchSize) {
-       var commands = generateSQLCommands(amount, table);
+        var commands = generateSQLCommands(amount, table);
 
         HashMap<CrudType, String[]> batchedCommands = new HashMap<>();
 
@@ -58,11 +59,11 @@ public class FakeData {
 
             for (int i = 0; i < originalCommands.length; i += batchSize) {
                 StringBuilder batch = new StringBuilder();
-                if(batchSize > 1) batch.append("START TRANSACTION;\n");
+                if (batchSize > 1) batch.append("START TRANSACTION;\n");
                 for (int j = i; j < Math.min(i + batchSize, originalCommands.length); j++) {
                     batch.append(originalCommands[j]).append(";\n");
                 }
-                if(batchSize > 1) batch.append("COMMIT;");
+                if (batchSize > 1) batch.append("COMMIT;");
                 batched[i / batchSize] = batch.toString();
             }
 

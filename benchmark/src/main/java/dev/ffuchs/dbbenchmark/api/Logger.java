@@ -5,11 +5,12 @@ import java.util.logging.LogRecord;
 import java.util.logging.SimpleFormatter;
 
 public class Logger {
-    private Logger(){}
-
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Logger.class.getName());
 
-    public static void setup(){
+    private Logger() {
+    }
+
+    public static void setup() {
         ConsoleHandler handler = new ConsoleHandler();
         handler.setFormatter(new SimpleFormatter() {
             private static final String format = "[%1$tF %1$tT] [%2$s] %3$s %n";

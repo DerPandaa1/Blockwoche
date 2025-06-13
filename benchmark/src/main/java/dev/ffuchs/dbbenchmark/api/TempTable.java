@@ -2,7 +2,7 @@ package dev.ffuchs.dbbenchmark.api;
 
 import java.util.UUID;
 
-public class TempTable implements  AutoCloseable {
+public class TempTable implements AutoCloseable {
     private final DBBenchmarkConnection connection;
     private final String tableName;
 

@@ -37,7 +37,7 @@ public class DBBenchmarkConnection implements AutoCloseable {
         }
     }
 
-    public TempTable createTempTable(){
+    public TempTable createTempTable() {
         return new TempTable(this);
     }
 }
