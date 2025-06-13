@@ -16,7 +16,7 @@ public class BenchmarkManager {
 
     public static final int[] BATCH_SIZES = new int[] { 1, 5, 20, 100 };
 
-    public static void executeBatchBenchmark(DBBenchmarkConnection connection, String id, BiFunction<Integer, Integer, BenchmarkResult> benchmark){
+    public static void executeBatchBenchmark(DBBenchmarkConnection connection, String outputFolder, String id, BiFunction<Integer, Integer, BenchmarkResult> benchmark){
         Logger.info("Running " + id + " with " + AMOUNT + " iterations for each query count: " + java.util.Arrays.toString(QUERY_COUNTS));
         long lastTime = System.currentTimeMillis();
         for(var queryCount : QUERY_COUNTS) {
@@ -33,13 +33,14 @@ public class BenchmarkManager {
                     results.add(benchmark.apply(queryCount, batchSize));
                 }
                 String fileName = id + "_queries" + queryCount + "_batchsize" + batchSize + ".csv";
-                Logger.info("            Exporting to " + fileName);
-                BenchmarkResult.dumpResultsAsCSV(results, fileName);
+                String filepath = outputFolder + "/" + fileName;
+                Logger.info("            Exporting to " + filepath);
+                BenchmarkResult.dumpResultsAsCSV(results, filepath);
             }
         }
     }
 
-    public static void BatchQueryBenchmark(DBBenchmarkConnection connection) {
-        executeBatchBenchmark(connection, "BatchQueryBenchmark", (queryCount, batchSize) -> new BatchQueryBenchmark(connection, queryCount, batchSize).runAndResult());
+    public static void BatchQueryBenchmark(DBBenchmarkConnection connection, String outputFolder) {
+        executeBatchBenchmark(connection, outputFolder, "BatchQueryBenchmark", (queryCount, batchSize) -> new BatchQueryBenchmark(connection, queryCount, batchSize).runAndResult());
     }
 }
