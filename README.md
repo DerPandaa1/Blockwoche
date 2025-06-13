@@ -29,3 +29,9 @@ Modifizieren
 ### Sonstige Notizen
 
 - logarithmisch hochgehen mit Testmenge
+
+
+
+
+- Schreibtests:
+    - 5 Minuten: Wie viele Batched (50 requests auf einmal) vs Einzelrequests koennen jeweils abgefertigt werden von mehreren Instanzen die auf die Datenbank gleichzeitig zugreifen?
