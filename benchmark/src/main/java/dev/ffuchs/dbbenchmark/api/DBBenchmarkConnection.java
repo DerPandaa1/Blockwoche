@@ -12,7 +12,7 @@ public class DBBenchmarkConnection implements AutoCloseable {
         try {
             String jdbcUrl = port == 0
                     ? "jdbc:hsqldb:mem:testdb"
-                    : "jdbc:hsqldb:hsql://" + host + ":" + port + "/testdb";
+                    : "jdbc:hsqldb:hsql://" + host + ":" + port + "/";
 
             this.connection = DriverManager.getConnection(jdbcUrl, "SA", "");
         } catch (SQLException e) {
@@ -35,5 +35,9 @@ public class DBBenchmarkConnection implements AutoCloseable {
         } catch (SQLException e) {
             throw new RuntimeException("Failed to close DB connection", e);
         }
+    }
+
+    public TempTable createTempTable(){
+        return new TempTable(this);
     }
 }

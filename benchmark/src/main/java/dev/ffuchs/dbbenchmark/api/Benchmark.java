@@ -12,4 +12,9 @@ public abstract class Benchmark implements Runnable {
     public BenchmarkResult getResult() {
         return result;
     }
+
+    public BenchmarkResult runAndResult() {
+        run();
+        return result;
+    }
 }
