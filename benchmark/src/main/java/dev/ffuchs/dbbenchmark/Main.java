@@ -1,6 +1,5 @@
 package dev.ffuchs.dbbenchmark;
 
-import dev.ffuchs.dbbenchmark.api.BenchmarkResult;
 import dev.ffuchs.dbbenchmark.api.DBBenchmarkConnection;
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
@@ -28,7 +27,7 @@ public class Main implements Runnable {
     @Override
     public void run() {
         try (var connection = new DBBenchmarkConnection(host, port, user, password)) {
-            BenchmarkResult.dumpResultsAsCSV(BenchmarkManager.SingleQueryBenchmark(connection), "SingleQueryBenchmark.csv");
+            BenchmarkManager.SingleQueryBenchmark(connection);
         } catch (Exception e) {
             System.err.println("An error occurred: " + e.getMessage());
         }
