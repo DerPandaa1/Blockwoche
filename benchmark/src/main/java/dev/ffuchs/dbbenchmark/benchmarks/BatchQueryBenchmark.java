@@ -4,12 +4,14 @@ import dev.ffuchs.dbbenchmark.api.*;
 
 import java.util.Map;
 
-public class SingleQueryBenchmark extends Benchmark {
+public class BatchQueryBenchmark extends Benchmark {
     private int queryCountPerCrudType;
+    private int batchSize;
 
-    public SingleQueryBenchmark(DBBenchmarkConnection connection, int queryCountPerCrudType) {
+    public BatchQueryBenchmark(DBBenchmarkConnection connection, int queryCountPerCrudType, int batchSize) {
         super(connection);
         this.queryCountPerCrudType = queryCountPerCrudType;
+        this.batchSize = batchSize;
     }
 
     @Override
@@ -19,8 +21,8 @@ public class SingleQueryBenchmark extends Benchmark {
         long timeUpdate;
         long timeDelete;
 
-        try (var table = connection.createTempTable()){
-            var commands = FakeData.generateSQLCommands(queryCountPerCrudType, table.getTableName());
+        try (var table = connection.createTempTable()) {
+            var commands = FakeData.generateBatchedSQLCommands(queryCountPerCrudType, table.getTableName(), batchSize);
 
             timeCreate = System.nanoTime();
 
@@ -55,7 +57,7 @@ public class SingleQueryBenchmark extends Benchmark {
             timeDelete = System.nanoTime() - timeDelete;
         }
 
-        result = new BenchmarkResult("SingleQueryBenchmark", timeCreate + timeRead + timeUpdate + timeDelete, queryCountPerCrudType * 4, Map.of(
+        result = new BenchmarkResult("BatchQueryBenchmark", timeCreate + timeRead + timeUpdate + timeDelete, queryCountPerCrudType * 4L, batchSize, Map.of(
                 CrudType.CREATE, timeCreate,
                 CrudType.READ, timeRead,
                 CrudType.UPDATE, timeUpdate,

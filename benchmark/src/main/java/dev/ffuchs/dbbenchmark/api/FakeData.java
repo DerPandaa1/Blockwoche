@@ -46,4 +46,29 @@ public class FakeData {
 
         return commands;
     }
+
+    public static HashMap<CrudType, String[]> generateBatchedSQLCommands(int amount, String table, int batchSize) {
+       var commands = generateSQLCommands(amount, table);
+
+        HashMap<CrudType, String[]> batchedCommands = new HashMap<>();
+
+        for (CrudType type : CrudType.values()) {
+            String[] originalCommands = commands.get(type);
+            String[] batched = new String[(int) Math.ceil((double) originalCommands.length / batchSize)];
+
+            for (int i = 0; i < originalCommands.length; i += batchSize) {
+                StringBuilder batch = new StringBuilder();
+                if(batchSize > 1) batch.append("START TRANSACTION;\n");
+                for (int j = i; j < Math.min(i + batchSize, originalCommands.length); j++) {
+                    batch.append(originalCommands[j]).append(";\n");
+                }
+                if(batchSize > 1) batch.append("COMMIT;");
+                batched[i / batchSize] = batch.toString();
+            }
+
+            batchedCommands.put(type, batched);
+        }
+
+        return batchedCommands;
+    }
 }
