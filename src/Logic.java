@@ -32,7 +32,7 @@ public class Logic {
 
         File folder = new File("in/");
         File[] listOfFiles = folder.listFiles();
-        if(listOfFiles == null){
+        if (listOfFiles == null) {
             System.out.print("No Files In Dir");
             System.exit(404);
         }
@@ -42,7 +42,26 @@ public class Logic {
             String createdLine = createFormatedString(f);
             System.out.println(createdLine);
             writeCSVLine(out, createdLine);
+            clearAllVars();
         }
+    }
+
+    private void clearAllVars() {
+        amountOfLines = 0;
+        TotalTime_ns_arr = new ArrayList<>();
+        TotalQueries_arr = new ArrayList<>();
+        CreateTime_ns_arr = new ArrayList<>();
+        ReadTime_ns_arr = new ArrayList<>();
+        UpdateTime_ns_arr = new ArrayList<>();
+        DeleteTime_ns_arr = new ArrayList<>();
+        batchSize = "";
+        TotalTime_ns = 0;
+        TotalQueries = 0;
+        CreateTime_ns = 0;
+        ReadTime_ns = 0;
+        UpdateTime_ns = 0;
+        DeleteTime_ns = 0;
+        header = "";
     }
 
     private String createFormatedString(File f) {

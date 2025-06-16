@@ -1,0 +1,9 @@
+Benchmark,Total Time (ns),Total Queries,Batch Size,Create Time (ns),Read Time (ns),Update Time (ns),Delete Time (ns)
+BatchQueryBenchmark_queries1000_batchsize1.csv,109168326,4000,1,26301710,27514944,28556710,26794961
+BatchQueryBenchmark_queries1000_batchsize100.csv,15779371,4000,100,3031368,3684529,4895662,4167810
+BatchQueryBenchmark_queries1000_batchsize20.csv,19704143,4000,20,3977743,4741055,6568162,4417181
+BatchQueryBenchmark_queries1000_batchsize5.csv,34498471,4000,5,8019313,8203775,10074065,8201316
+BatchQueryBenchmark_queries100_batchsize1.csv,11875674,400,1,2920134,3072314,3130272,2752953
+BatchQueryBenchmark_queries100_batchsize100.csv,1454238,400,100,296647,359518,463641,334431
+BatchQueryBenchmark_queries100_batchsize20.csv,1921725,400,20,365698,449541,685736,420749
+BatchQueryBenchmark_queries100_batchsize5.csv,3118917,400,5,683809,794985,889359,750762
