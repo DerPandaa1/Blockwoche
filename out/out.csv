@@ -1,4 +1,4 @@
-Benchmark,Total Time (ns),Total Queries,Batch Size,Create Time (ns),Read Time (ns),Update Time (ns),Delete Time (ns)
+Benchmark,Total Time (ms),Total Queries,Batch Size,Create Time (ms),Read Time (ms),Update Time (ms),Delete Time (ms)
 BatchQueryBenchmark_queries1000_batchsize1.csv,"=SUM(109168326/1000000)",4000,1,"=SUM(26301710/1000000)","=SUM(27514944/1000000)","=SUM(28556710/1000000)","=SUM(26794961/1000000)"
 BatchQueryBenchmark_queries1000_batchsize100.csv,"=SUM(15779371/1000000)",4000,100,"=SUM(3031368/1000000)","=SUM(3684529/1000000)","=SUM(4895662/1000000)","=SUM(4167810/1000000)"
 BatchQueryBenchmark_queries1000_batchsize20.csv,"=SUM(19704143/1000000)",4000,20,"=SUM(3977743/1000000)","=SUM(4741055/1000000)","=SUM(6568162/1000000)","=SUM(4417181/1000000)"

@@ -19,7 +19,7 @@ public class Logic {
     long ReadTime_ns = 0;
     long UpdateTime_ns = 0;
     long DeleteTime_ns = 0;
-    String header = "";
+    String header = "Benchmark,Total Time (ms),Total Queries,Batch Size,Create Time (ms),Read Time (ms),Update Time (ms),Delete Time (ms)";
 
     public void convertFileToLine() {
         File out = new File("out/out.csv");
@@ -61,7 +61,6 @@ public class Logic {
         ReadTime_ns = 0;
         UpdateTime_ns = 0;
         DeleteTime_ns = 0;
-        header = "";
     }
 
     private String createFormatedString(File f) {
