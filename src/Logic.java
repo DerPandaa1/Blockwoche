@@ -65,9 +65,11 @@ public class Logic {
     }
 
     private String createFormatedString(File f) {
-        String out = f.getName() + "," + TotalTime_ns + "," + TotalQueries + "," + batchSize + "," + CreateTime_ns + ","
-                + ReadTime_ns
-                + "," + UpdateTime_ns + "," + DeleteTime_ns;
+        String out = f.getName() + "," + "\"=SUM(" + TotalTime_ns + "/1000000)\"" + "," + TotalQueries + "," + batchSize + ","
+                + "\"=SUM(" + CreateTime_ns + "/1000000)\"" + ","
+                + "\"=SUM(" + ReadTime_ns + "/1000000)\""+ ","
+                + "\"=SUM(" + UpdateTime_ns + "/1000000)\"" + ","
+                + "\"=SUM(" + DeleteTime_ns + "/1000000)\"";
         return out;
     }
 
